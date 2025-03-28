@@ -30,17 +30,27 @@
 
     </header>
     <main>
-        <div id="carousel">
+        <div class="carousel-container">
+            <img class="Imagecarousel" id="carouselImage" src="img/imagem_1.jpg" alt="Slide 1">
+            <div class="carousel-item">
+                <h1 class="carouseltitulo" id="carouselTitle" href="https://exemplo.com/1" >Slide 1</h1>
+                <h1 class="carouseltitulo2" id="carouselTitle2" href="https://exemplo.com/1" >Slide 1</h1>
+                <div class="carouselinfo">
+                    <p class="carouselparagraph" id="carouselparagraph">slide</p>
+                    <a class="carousellink" id="carouselLink" target="_blank">Saiba mais</a>
+                </div>
+            </div>
+    
+            <div class="buttons">
+                <button class="carouselbutton" id="prevBtn">&#10094;</button>
+                <div class="button_contador">
+                    <p class="paragraphbutton" id="cont">1</p>
+                    <p class="paragraphbutton">/</p>
+                    <p class="paragraphbutton">3</p>
+                </div>
+                <button class="carouselbutton" id="nextBtn">&#10095;</button>
+            </div>
         </div>
-        <div id="carousel-title">
-        </div>
-        <script>
-             //insert each image on carousel
-            carouselArr.push(new Carousel("imagem_1.jpg","Esta é a nova Ranger Ford 2022. Verifique novidades.","lancamento.html"));
-            carouselArr.push(new Carousel("imagem_2.jpg","Ford a nossa história","#"));
-            carouselArr.push(new Carousel("imagem_3.jpg","Nova Ford Bronco Sport 2022","lancamento.html"));
-            Carousel.Start(carouselArr);
-        </script>
     </main>
     <footer>
         <nav id="social">

@@ -1,92 +1,88 @@
-
-
-//carousel
-
-//Array storage class
-let carouselArr = [];
-
-
-//class Carousel
 class Carousel {
+    constructor(images, interval = 2000000) {
+        this.images = images;
+        this.index = 0;//será utilizado para o botão
+        this.intervalTime = interval;
+        this.timer = null;
 
-    
-      
-    static Start(arr){
-        if(arr){
+        // Elementos do carrossel
+        this.imageElement = document.getElementById("carouselImage");//seleciona um elemento pelo se ID
+        this.titleElement = document.getElementById("carouselTitle");
+        this.titleElement2 = document.getElementById("carouselTitle2");
+        this.linkElement = document.getElementById("carouselLink");
+        this.paragraphElement = document.getElementById("carouselparagraph");
 
-            if(arr.length > 0){
-                Carousel._sequence = 0;
-                Carousel._size = arr.length;
-                Carousel.Next(); //start
-                Carousel._interval = setInterval(function(){ Carousel.Next(); },5000);
-            }
-            
-        } else {
-            throw "Method Start need a Array Variable.";
-        }
+        // Botões
+        this.prevBtn = document.getElementById("prevBtn");
+        this.nextBtn = document.getElementById("nextBtn");
+
+        // Eventos
+        this.prevBtn.addEventListener("click", () => this.back());
+        this.nextBtn.addEventListener("click", () => this.next());
+
+        // Inicia o carrossel
+        this.updateCarousel();
+        this.startAutoSlide();
     }
 
-    static Next(){
-        
-    }
-};
+    updateCarousel() {
+        const currentItem = this.images[this.index];
 
-/* // Classe que representa o Carrossel
-class Carousel {
-
-    // O construtor da classe para inicializar um carrossel com uma imagem, descrição e link
-    constructor(imagem, descricao, link) {
-        this.imagem = imagem;
-        this.descricao = descricao;
-        this.link = link;
+        // Atualiza imagem, título e link
+        this.imageElement.src = currentItem.image;//representar a imagem atual que o carrossel está exibindo
+        this.imageElement.alt = currentItem.title;
+        this.titleElement.textContent = currentItem.title;
+        this.titleElement2.textContent = currentItem.title2;
+        this.paragraphElement.textContent = currentItem.paragraph;
+        this.linkElement.href = currentItem.url;
+        document.getElementById("cont").textContent = this.index + 1;
     }
 
-    // Método estático para iniciar o carrossel
-    static Start(arr) {
-        if (arr && arr.length > 0) {
-            // Inicializa a sequência
-            Carousel._sequence = 0;
-            Carousel._size = arr.length;
-
-            // Chama a função Next para iniciar o carrossel
-            Carousel.Next(arr);
-
-            // Intervalo de 5 segundos para trocar de imagem
-            Carousel._interval = setInterval(() => {
-                Carousel.Next(arr);
-            }, 5000);
-        } else {
-            throw "Método Start precisa de uma variável Array.";
-        }
+    next() {
+        this.index = (this.index + 1) % this.images.length;
+        this.updateCarousel();
+        this.resetTimer();
     }
 
-    // Método estático para exibir a próxima imagem
-    static Next(arr) {
-        // Limpa a exibição anterior
-        document.querySelector("#carousel").innerHTML = '';
-        document.querySelector("#carousel-title").innerHTML = '';
+    back() {
+        this.index = (this.index - 1 + this.images.length) % this.images.length;
+        this.updateCarousel();
+        this.resetTimer();
+    }
 
-        // Pega a imagem e o título com base no índice da sequência
-        const itemAtual = arr[Carousel._sequence];
+    startAutoSlide() {
+        this.timer = setInterval(() => this.next(), this.intervalTime); //inicia o carrossel automaticamente
+    }
 
-        // Adiciona a imagem no carrossel
-        const img = document.createElement('img');
-        img.src = itemAtual.imagem;
-        img.alt = itemAtual.descricao;
-        document.querySelector("#carousel").appendChild(img);
-
-        // Adiciona o título do carrossel
-        const title = document.createElement('h2');
-        title.textContent = itemAtual.descricao;
-        document.querySelector("#carousel-title").appendChild(title);
-
-        // Atualiza a sequência para a próxima imagem
-        Carousel._sequence++;
-
-        // Se chegou na última imagem, volta para a primeira
-        if (Carousel._sequence >= Carousel._size) {
-            Carousel._sequence = 0;
-        }
+    resetTimer() {
+        clearInterval(this.timer);
+        this.startAutoSlide();
     }
 }
 
+
+// Dados do carrossel
+const images = [
+    {
+        image: "img/imagem_1.jpg",
+        title: "Nova Ford Ranger Black",
+        paragraph: "Raça Forte Também No Asfalto",
+        url: "https://www.ford.com.br/picapes/ranger/"
+    },
+    {
+        image: "img/imagem_2.jpg",
+        title2: "Slide 4",
+        url: "https://www.ford.com.br/"
+    },
+    {
+        image: "img/imagem_3.jpg",
+        paragraph: "O ícone da aventura, agora no Brasil.",
+        title: "Novo Ford Bronco Sport",
+        url: "https://www.ford.com.br/suvs-e-crossovers/bronco-sport/"
+    }
+];
+
+// Inicializa o carrossel quando a página carregar
+document.addEventListener("DOMContentLoaded", () => {
+    new Carousel(images);
+});
