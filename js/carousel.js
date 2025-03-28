@@ -1,5 +1,5 @@
 class Carousel {
-    constructor(images, interval = 2000000) {
+    constructor(images, interval = 500000000) {
         this.images = images;
         this.index = 0;//será utilizado para o botão
         this.intervalTime = interval;
@@ -71,7 +71,7 @@ const images = [
     },
     {
         image: "img/imagem_2.jpg",
-        title2: "Slide 4",
+        title2: "Ford a Nossa História",
         url: "https://www.ford.com.br/"
     },
     {
