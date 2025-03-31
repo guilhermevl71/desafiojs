@@ -29,12 +29,14 @@ function Post(form) {
 
 function Enviar() {
 
+    event.preventDefault();
     var nome = document.getElementById("nomeid");
 
     if (nome.value != "") {
         alert('Obrigado sr(a) ' + nome.value + ' os seus dados foram encaminhados com sucesso');
     }
     
-    let dadosform = localStorage.getItem("formulario");
+    let dadosform = localStorage.getItem("formulario"); // ao usa o setitem ele salva os dados no ls, e ao usa o get ele puxa esses dados.
     console.log(dadosform);
+    document.getElementById("form").reset();
 }
