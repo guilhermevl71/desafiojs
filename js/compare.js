@@ -27,6 +27,24 @@ function GetCarArrPosition(arr, carClass) {
     return -1;
 }
 
+function desabilitarcheckbox() {
+    const checkboxes = document.querySelectorAll(".checkbox");
+
+    if (carArr.length >= 2) {  
+        checkboxes.forEach(cb => {
+            if (!cb.checked) {
+                cb.disabled = true;
+                cb.parentElement.style.opacity = "0.5";
+            }
+        });
+    } else {  
+        checkboxes.forEach(cb => {
+            cb.disabled = false;
+            cb.parentElement.style.opacity = "1";
+        });
+    }
+}
+
 function SetCarToCompare(el, carClass) {
    
     if(carClass instanceof Car){
@@ -36,6 +54,7 @@ function SetCarToCompare(el, carClass) {
         } else {
             carArr.splice(index, 1);
         } 
+        desabilitarcheckbox();
     } else {
         throw "You need set a Car Class";
     }
