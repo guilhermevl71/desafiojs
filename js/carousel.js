@@ -55,7 +55,7 @@ class Carousel {
     }
 
     static resetTimer(timerInstance, startFunction) {
-        clearInterval(this.timer);
+        clearInterval(timerInstance);
         startFunction();
     }
 }
