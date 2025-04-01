@@ -35,12 +35,14 @@ function desabilitarcheckbox() {
             if (!cb.checked) {
                 cb.disabled = true;
                 cb.parentElement.style.opacity = "0.5";
+                cb.closest("li").style.opacity = "0.5";
             }
         });
     } else {  
         checkboxes.forEach(cb => {
             cb.disabled = false;
             cb.parentElement.style.opacity = "1";
+            cb.closest("li").style.opacity = "1";
         });
     }
 }
