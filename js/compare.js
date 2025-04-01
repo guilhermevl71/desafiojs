@@ -76,8 +76,8 @@ function HideCompare(){
 
 function UpdateCompareTable() {
     //atualiza image
-    document.getElementById("compare_image_0").src = 
-    document.getElementById("compare_image_1").innerText
+    document.getElementById("compare_image_0").src = carArr[0].image;
+    document.getElementById("compare_image_1").src = carArr[1].image;
     //atualiza preco
     document.getElementById("compare_preco_0").innerText = (`R$ ${carArr[0].preco}`);
     document.getElementById("compare_preco_1").innerText = (`R$ ${carArr[1].preco}`);
