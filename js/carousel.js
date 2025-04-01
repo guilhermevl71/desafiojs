@@ -1,11 +1,11 @@
 class Carousel {
-    constructor(images, interval = 500000000) {
+    constructor(images, interval = 2000) {
         this.images = images;
-        this.index = 0;//será utilizado para o botão
+        this.index = 0; //utilizado para o botão
         this.intervalTime = interval;
         this.timer = null;
 
-        // Elementos do carrossel
+        // Elementos
         this.imageElement = document.getElementById("carouselImage");//seleciona um elemento pelo se ID
         this.titleElement = document.getElementById("carouselTitle");
         this.titleElement2 = document.getElementById("carouselTitle2");
@@ -20,7 +20,7 @@ class Carousel {
         this.prevBtn.addEventListener("click", () => this.back());
         this.nextBtn.addEventListener("click", () => this.next());
 
-        // Inicia o carrossel
+        // Inicia
         this.updateCarousel();
         this.startAutoSlide();
     }
@@ -29,7 +29,7 @@ class Carousel {
         const currentItem = this.images[this.index];
 
         // Atualiza imagem, título e link
-        this.imageElement.src = currentItem.image;//representar a imagem atual que o carrossel está exibindo
+        this.imageElement.src = currentItem.image;
         this.imageElement.alt = currentItem.title;
         this.titleElement.textContent = currentItem.title;
         this.titleElement2.textContent = currentItem.title2;
@@ -41,22 +41,22 @@ class Carousel {
     next() {
         this.index = (this.index + 1) % this.images.length;
         this.updateCarousel();
-        this.resetTimer();
+        this.resetTimer(this.timer, () => this.startAutoSlide());
     }
 
     back() {
         this.index = (this.index - 1 + this.images.length) % this.images.length;
         this.updateCarousel();
-        this.resetTimer();
+        this.resetTimer(this.timer, () => this.startAutoSlide());
     }
 
     startAutoSlide() {
         this.timer = setInterval(() => this.next(), this.intervalTime); //inicia o carrossel automaticamente
     }
 
-    resetTimer() {
+    static resetTimer(timerInstance, startFunction) {
         clearInterval(this.timer);
-        this.startAutoSlide();
+        startFunction();
     }
 }
 

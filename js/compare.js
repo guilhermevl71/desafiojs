@@ -35,7 +35,7 @@ function desabilitarcheckbox() {
             if (!cb.checked) {
                 cb.disabled = true;
                 cb.parentElement.style.opacity = "0.5";
-                cb.closest("li").style.opacity = "0.5";
+                cb.closest("li").style.opacity = "0.70";
             }
         });
     } else {  
@@ -81,8 +81,8 @@ function UpdateCompareTable() {
     document.getElementById("compare_image_0").src = carArr[0].image;
     document.getElementById("compare_image_1").src = carArr[1].image;
     //atualiza preco
-    document.getElementById("compare_preco_0").innerText = (`R$ ${carArr[0].preco}`);
-    document.getElementById("compare_preco_1").innerText = (`R$ ${carArr[1].preco}`);
+    document.getElementById("compare_preco_0").innerText = (`R$ ${carArr[0].preco.toLocaleString('pt-BR')}`);
+    document.getElementById("compare_preco_1").innerText = (`R$ ${carArr[1].preco.toLocaleString('pt-BR')}`);
     //atualiza alturaCacamba
     document.getElementById("compare_alturacacamba_0").innerText = carArr[0].alturaCacamba;
     document.getElementById("compare_alturacacamba_1").innerText = carArr[1].alturaCacamba;

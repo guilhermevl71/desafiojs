@@ -36,5 +36,5 @@ function Enviar() {
     }
     
     let dadosform = localStorage.getItem("formulario"); // ao usa o setitem ele salva os dados no ls, e ao usa o get ele puxa esses dados.
-    console.log(dadosform);
+    alert(dadosform);
 }
