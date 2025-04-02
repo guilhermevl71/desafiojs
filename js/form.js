@@ -14,14 +14,6 @@ class contato {
 
 function Post(form) {
 
-    let email = document.getElementById("email").value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    if (!emailRegex.teste(email)){
-        alert("Escreva em email válido!");
-        return;
-    }
-
   let data = new contato(form.elements.namedItem("nome").value,
             form.elements.namedItem("sobrenome").value, 
             form.elements.namedItem("email").value, 
@@ -37,6 +29,20 @@ function Post(form) {
 
 function Enviar() {
 
+    let email = document.getElementById("emailid").value;
+    let cpf = document.getElementById("cpfid").value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!emailRegex.test(email)){
+        alert("Escreva em email válido!");
+        return;
+    }
+
+    if (){
+        alert("Cpf inválido");
+        return;
+    }
+
     var nome = document.getElementById("nomeid");
 
     if (nome.value != "") {
@@ -45,4 +51,6 @@ function Enviar() {
     
     let dadosform = localStorage.getItem("formulario"); // ao usa o setitem ele salva os dados no ls, e ao usa o get ele puxa esses dados.
     alert(dadosform);
+
+    form.reset();
 }
