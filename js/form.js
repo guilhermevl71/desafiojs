@@ -29,8 +29,8 @@ function Post(form) {
 
 function Enviar() {
 
-    let email = document.getElementById("emailid").value;
-    let cpf = document.getElementById("cpfid").value;
+    const email = document.getElementById("emailid").value;
+    const cpf = document.getElementById("cpfid").value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if (!emailRegex.test(email)){
@@ -38,8 +38,8 @@ function Enviar() {
         return;
     }
 
-    if (){
-        alert("Cpf inválido");
+    if (cpf.length != 11){
+        alert("Cpf Inválido")
         return;
     }
 
