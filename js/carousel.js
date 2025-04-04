@@ -67,18 +67,18 @@ const images = [
         image: "img/imagem_1.jpg",
         title: "Nova Ford Ranger Black",
         paragraph: "Raça Forte Também No Asfalto",
-        url: "https://www.ford.com.br/picapes/ranger/"
+        url: "lancamento.html"
     },
     {
         image: "img/imagem_2.jpg",
         title2: "Ford a Nossa História",
-        url: "https://www.ford.com.br/"
+        url: "lancamento.html"
     },
     {
         image: "img/imagem_3.jpg",
         paragraph: "O ícone da aventura, agora no Brasil.",
         title: "Novo Ford Bronco Sport",
-        url: "https://www.ford.com.br/suvs-e-crossovers/bronco-sport/"
+        url: "lancamento.html"
     }
 ];
 
