@@ -1,3 +1,4 @@
+
 .fordform {
     display: block;
     width: 300px;
@@ -27,14 +28,14 @@ main div {
     display: inline-block;
     vertical-align: top;
     text-align: left;
-    padding-top: 30px;
-    padding-bottom: 30px;
 }
 
 .forms {
     display: block;
     text-align: center;
+    padding-top: 50px;
 }
+
 
 h2 {
     text-align: left;
@@ -56,4 +57,43 @@ button:hover {
 
 .titulo {
     margin-left: 8px;
+}
+
+.form_paragraph1 {
+    font-size: 0.66rem;
+    width: 300px;
+    opacity: 50%;
+}
+
+.form_paragraph2 {
+    font-size: 0.70rem;
+    width: 300px;
+}
+
+.paragraph_container {
+    margin-left: 8px;
+    padding-bottom: 5px;
+}
+
+.termo1 {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+}
+
+.termo2 {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+    padding-bottom: 10px;
+}
+
+
+.form_button {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox1 {
+    vertical-align: top;
 }

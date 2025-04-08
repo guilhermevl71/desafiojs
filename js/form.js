@@ -12,6 +12,19 @@ class contato {
     }
 }
 
+function desabilitarbutton() {
+    const checkbox = document.getElementById("checkboxid");
+    const button = document.getElementById("buttonid");
+
+    if (!checkbox.checked) {
+        button.disabled = true;
+        button.style.opacity = "0.5";
+    } else {
+        button.disabled = false;
+        button.style.opacity = "1";
+    }
+}
+
 function Post(form) {
 
   let data = new contato(form.elements.namedItem("nome").value,
@@ -24,14 +37,16 @@ function Post(form) {
         let dados = JSON.stringify(data); // let dados é igual aos dados do formulario em json
         localStorage.setItem("formulario", dados); // o set item salva os dados no localstorage do navegador, formulario é o nome da "variavel" onde está saldo, e dados oq sera salvo
         
-  
 }
+
 
 function Enviar() {
 
+    const nome = document.getElementById("nomeid").value;
     const email = document.getElementById("emailid").value;
     const cpf = document.getElementById("cpfid").value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     
     if (!emailRegex.test(email)){
         alert("Escreva em email válido!");
@@ -43,10 +58,8 @@ function Enviar() {
         return;
     }
 
-    var nome = document.getElementById("nomeid");
-
-    if (nome.value != "") {
-        alert('Obrigado sr(a) ' + nome.value + ' os seus dados foram encaminhados com sucesso');
+    if (nome != "") {
+        alert('Obrigado sr(a) ' + nome + ' os seus dados foram encaminhados com sucesso');
     }
     
     let dadosform = localStorage.getItem("formulario"); // ao usa o setitem ele salva os dados no ls, e ao usa o get ele puxa esses dados.
@@ -54,3 +67,5 @@ function Enviar() {
 
     form.reset();
 }
+
+window.onload = desabilitarbutton;
